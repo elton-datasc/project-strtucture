@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "df_creator"
+version = "0.1.0"
+description = "Criação de df pandas partindo de 2 listas"
+authors = ["elton-datasc <elton-guilherme@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
