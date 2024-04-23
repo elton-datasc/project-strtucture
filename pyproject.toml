@@ -14,7 +14,20 @@ pandera = "^0.18.3"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
 blue = "^0.9.1"
+ruff = "^0.4.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
