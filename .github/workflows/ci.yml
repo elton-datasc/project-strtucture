@@ -2,6 +2,10 @@ name: Python Application Workflow
 
 on: [push]
 
+runs:
+  using: 'node20'
+  main: 'main.js'
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
