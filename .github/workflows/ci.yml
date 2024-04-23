@@ -2,22 +2,26 @@ name: Python Application Workflow
 
 on: [push]
 
-runs:
-  using: 'node20'
-  main: 'main.js'
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3  # Verifique se esta é a versão correta para Node.js 20
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.12'  # Ajuste conforme a versão do Python usada no seu projeto
+        python-version: '3.12'
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    - name: Configure Poetry
+      run: |
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     - name: Install dependencies
       run: |
@@ -25,4 +29,3 @@ jobs:
 
     - name: Run Makefile command
       run: make audit_format_test_and_run
-
