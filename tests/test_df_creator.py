@@ -1,23 +1,32 @@
+"""Testes das funções do arquivo df_creator.py."""
 import pandera as pa
 
-from df_creator.df_creator import (
-    creator,
-)
+from df_creator.df_creator import creator
 
 # Define the expected schema using Pandera
+"""
+'Nome' são strings
+
+'Idade' são inteiros
+"""
 schema = pa.DataFrameSchema(
     {
-        'Nome': pa.Column(
-            str
-        ),  # Validate that all values in 'Nome' are strings
-        'Idade': pa.Column(
-            int
-        ),  # Validate that all values in 'Idade' are integers
+        'Nome': pa.Column(str),
+        'Idade': pa.Column(int),
     }
 )
 
 
-def test_df_creator():
+def test_df_creator() -> None:
+    """
+    Testa a creator pra garantir que o df criado atenda ao esquema definido.
+
+    Returns:
+        None
+
+    Raises:
+        SchemaError: Se o DataFrame não atender ao esquema definido.
+    """
     # Call the function to create the DataFrame
     df = creator()
 
@@ -29,7 +38,15 @@ def test_df_creator():
     assert True  # This line is optional, as the test will fail on exception
 
 
-# Optionally, you can add more specific tests,such as checking for non-empty Df
-def test_df_non_empty():
+def test_df_non_empty() -> None:
+    """
+    Testa se o DataFrame criado pela função creator não está vazio.
+
+    Returns:
+        None
+
+    Raises:
+        AssertionError: Se o DataFrame estiver vazio.
+    """
     df = creator()
-    assert not df.empty
+    assert not df.empty, "O DataFrame não deve estar vazio."
