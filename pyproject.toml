@@ -27,7 +27,10 @@ extend-exclude = ['migrations']
 
 [tool.ruff.lint]
 preview = true
-select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+select = ['I', 'F', 'E', 'W', 'PL', 'PT','D']
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
 
 [tool.ruff.format]
 preview = true
